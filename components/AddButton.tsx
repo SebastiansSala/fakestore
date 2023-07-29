@@ -1,13 +1,13 @@
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineShoppingCart } from "react-icons/ai"
 
 const AddButton = () => {
-  const handleClick = () => {};
+  const handleClick = () => {}
 
   return (
-    <button className='p-2 bg-gray-600 text-white text-base rounded-md'>
-      <AiOutlineShoppingCart />
+    <button className='rounded-full px-4 py-2 bg-white font-bold uppercase text-base'>
+      ADD TO CART
     </button>
-  );
-};
+  )
+}
 
-export default AddButton;
+export default AddButton

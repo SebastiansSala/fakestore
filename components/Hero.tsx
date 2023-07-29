@@ -1,33 +1,42 @@
-'use client';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import Image from 'next/image';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { heroImages } from '@/data';
+import Image from "next/image"
+import { heroImages } from "@/data"
 
 export default function Hero() {
-  const images = heroImages;
+  const images = heroImages
   return (
-    <Swiper
-      spaceBetween={50}
-      pagination={true}
-      modules={[Pagination]}
-      className='h-96 relative w-full z-10'
-    >
-      {images.map((image, index) => (
-        <SwiperSlide key={index} className='absolute inset-0 w-full h-full'>
+    <section className='grid md:grid-cols-2 gap-2 h-[600px]'>
+      <div className='h-full relative'>
+        <Image
+          src={images[0]}
+          alt=''
+          width={800}
+          height={800}
+          className='h-full object-cover'
+        />
+      </div>
+      <div className='flex flex-col relative gap-2'>
+        <div className='h-4/6 relative bg-[#d4d3cf]'>
+          <h1 className='font-bold uppercase'>
+            REAL DESIGNS BY REAL ARTISTS FOR REAL PEOPLE
+          </h1>
+        </div>
+        <div className='grid grid-cols-2 gap-2 flex-1'>
           <Image
-            src={image}
-            alt={`Slide ${index}`}
-            width={8000}
-            priority
-            height={8000}
-            className='object-cover h-auto w-full'
+            src={images[0]}
+            alt=''
+            width={800}
+            height={800}
+            className='h-full object-cover'
           />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
+          <Image
+            src={images[0]}
+            alt=''
+            width={800}
+            height={800}
+            className='h-full object-cover'
+          />
+        </div>
+      </div>
+    </section>
+  )
 }

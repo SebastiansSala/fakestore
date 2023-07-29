@@ -1,25 +1,25 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import { Products } from './page';
-import Pagination from '@/components/Pagination';
-import Image from 'next/image';
+import { useState } from "react"
+import { Products } from "./page"
+import Pagination from "@/components/Pagination"
+import Image from "next/image"
 
 type ProductsProps = {
-  products: Products[];
-};
+  products: Products[]
+}
 
-export default function ProductsSection({ products }: ProductsProps) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const numberOfPages = Math.ceil(products.length / 10);
-  const pagesMapped = Array.from({ length: numberOfPages }, (_, i) => i + 1);
+export default function AllProducts({ products }: ProductsProps) {
+  const [currentPage, setCurrentPage] = useState(1)
+  const numberOfPages = Math.ceil(products.length / 10)
+  const pagesMapped = Array.from({ length: numberOfPages }, (_, i) => i + 1)
 
-  const prevPage = currentPage - 1;
+  const prevPage = currentPage - 1
 
   const paginatedProducts = products.slice(
     currentPage * 10 - 10,
     currentPage * 10
-  );
+  )
 
   return (
     <div className='container mx-auto mt-20'>
@@ -50,5 +50,5 @@ export default function ProductsSection({ products }: ProductsProps) {
         setCurrentPage={setCurrentPage}
       />
     </div>
-  );
+  )
 }

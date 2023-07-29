@@ -1,51 +1,37 @@
-import Card from '@/components/Card';
-import CardWithTag from '@/components/CartWithTag';
-import Hero from '@/components/Hero';
-import { getCategories, getImages, getProducts } from '@/lib/services';
+import { getCategories, getProducts } from "@/lib/services"
+import Hero from "@/components/Hero"
+import ProductsSection from "@/components/ProductsSections"
 
 export type Products = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-};
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
+}
 
-type Category =
-  | 'electronics'
-  | 'jewelery'
+export type Category =
+  | "electronics"
+  | "jewelery"
   | "men's clothing"
-  | "women's clothing";
+  | "women's clothing"
 
 export default async function Home() {
-  const categories = (await getCategories()) as Category[];
-  const products = (await getProducts()) as Products[];
-  const images = await getImages(4);
+  const categories = (await getCategories()) as Category[]
+  const products = (await getProducts()) as Products[]
 
   return (
     <main className='container mx-auto min-h-screen items-center justify-center flex-wrap gap-8 pb-20 pt-10 px-4'>
       <Hero />
-      <section className='mt-10'>
-        <h2>Currated Picks</h2>
-        <div className='grid grid-cols-4 gap-8 h-56 relative'>
-          {categories.map((category, index) => (
-            <CardWithTag
-              key={category}
-              category={category}
-              image={images[index]}
-            />
-          ))}
-        </div>
+      <section className='py-28'>
+        <h2 className='text-5xl font-extrabold'>
+          SOPA makes clothest to elevate everyday life through lighthreated
+          escapism. While styles vary by season, all collections are guide by
+          the inefflable sense of freedom that comes with travel.
+        </h2>
       </section>
-      <section className='mt-10'>
-        <h2>Featured Products</h2>
-        <div className='grid grid-cols-3 gap-8'>
-          {products.slice(0, 3).map((product, index) => (
-            <Card key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
+      <ProductsSection categories={categories} products={products} />
     </main>
-  );
+  )
 }
