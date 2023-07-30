@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import AddButton from "./AddButton"
 import { Product } from "@/lib/types"
 import Image from "next/image"
 import useCart from "@/hooks/useCart"
+import { CartContext } from "@/lib/CartProvider"
 
 type CardProps = {
   product: Product
@@ -14,10 +15,11 @@ const Card = ({ product }: CardProps) => {
   const [show, setShow] = useState(false)
   const { addToCart, cart } = useCart()
   const { id, title, price, description, category, image } = product
+  const { showDrawer } = useContext(CartContext)
 
   const handleClick = () => {
     addToCart(product)
-    console.log(cart)
+    showDrawer()
   }
 
   return (

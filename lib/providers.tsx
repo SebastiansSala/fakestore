@@ -1,7 +1,8 @@
 "use client"
+import CartProvider from "./CartProvider"
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
-  return
+  return <CartProvider>{children}</CartProvider>
 }
 
 export default Providers
