@@ -4,6 +4,7 @@ import { useState } from "react"
 import AddButton from "./AddButton"
 import { Product } from "@/lib/types"
 import Image from "next/image"
+import useCart from "@/hooks/useCart"
 
 type CardProps = {
   product: Product
@@ -11,7 +12,13 @@ type CardProps = {
 
 const Card = ({ product }: CardProps) => {
   const [show, setShow] = useState(false)
+  const { addToCart, cart } = useCart()
   const { id, title, price, description, category, image } = product
+
+  const handleClick = () => {
+    addToCart(product)
+    console.log(cart)
+  }
 
   return (
     <div
@@ -33,7 +40,7 @@ const Card = ({ product }: CardProps) => {
       </a>
       <div className='py-5 px-4'>
         <a href='#'>
-          <h5 className='text-black text-xl w-1/2 font-semibold tracking-tight truncate'>
+          <h5 className='text-black text-xl font-semibold tracking-tight truncate'>
             {title}
           </h5>
         </a>
@@ -45,7 +52,7 @@ const Card = ({ product }: CardProps) => {
       {show && (
         <div className='rounded-2xl flex justify-center items-center absolute inset-0 bg-black bg-opacity-50 h-full w-full animate-fade animate-duration-300'>
           <div className='z-50'>
-            <AddButton />
+            <AddButton onClick={handleClick} />
           </div>
         </div>
       )}

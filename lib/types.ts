@@ -7,6 +7,10 @@ export type Product = {
   image: string
 }
 
+export type CartProduct = Product & {
+  quantity?: number
+}
+
 export type Category =
   | "electronics"
   | "jewelery"
