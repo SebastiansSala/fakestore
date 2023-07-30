@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import AddButton from "./AddButton"
-import { Products } from "@/app/page"
+import { Product } from "@/lib/types"
 import Image from "next/image"
 
 type CardProps = {
-  product: Products
+  product: Product
 }
 
 const Card = ({ product }: CardProps) => {
@@ -19,7 +19,7 @@ const Card = ({ product }: CardProps) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      <div className='absolute top-4 left-4 rounded-full px-4 py-2 bg-orange-400 font-bold text-white'>
+      <div className='absolute top-4 left-4 rounded-full px-4 py-2 bg-[#de6737] font-bold text-white'>
         {category}
       </div>
       <a href='#'>
@@ -32,15 +32,14 @@ const Card = ({ product }: CardProps) => {
         />
       </a>
       <div className='py-5 px-4'>
-        <a href='#' className='flex justify-between items-center text-black'>
-          <h5 className='text-xl w-1/2 font-semibold tracking-tight truncate'>
+        <a href='#'>
+          <h5 className='text-black text-xl w-1/2 font-semibold tracking-tight truncate'>
             {title}
           </h5>
-          <h5 className='truncate'>{category}</h5>
         </a>
       </div>
-      <div className='flex items-center justify-between text-orange-400 px-4'>
-        <span className='text-3xl font-bold'>${price}</span>
+      <div className='flex items-center justify-between text-[#de6737] px-4'>
+        <span className='text-xl tracking-tighter font-bold'>${price}</span>
       </div>
 
       {show && (

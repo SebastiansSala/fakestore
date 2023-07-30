@@ -12,6 +12,7 @@ export default function Hero() {
           width={800}
           height={800}
           className='h-full object-cover'
+          priority
         />
       </div>
       <div className='flex flex-col relative gap-2'>

@@ -1,27 +1,39 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import Filter from "./Filter"
-import { Category, Products } from "@/app/page"
+import { Category, Product } from "@/lib/types"
 import Card from "./Card"
+import Pagination from "./Pagination"
+import usePagination from "@/hooks/usePagination"
+import useFilteredProducts from "@/hooks/useFilteredProducts"
 
 type ProductsSectionProps = {
-  products: Products[]
+  products: Product[]
   categories: Category[]
 }
 const ProductsSection = ({ products, categories }: ProductsSectionProps) => {
   const [filterActivated, setFilterActivated] = useState("All")
-  const [allProducts, setAllProducts] = useState(products)
+
+  const filteredProducts = useFilteredProducts({
+    filterActivated,
+    products,
+  })
+
+  const productsPerPage = 3
+
+  const {
+    paginatedItems,
+    currentPage,
+    totalPages,
+    setCurrentPage,
+    handlePrevPage,
+    handleNextPage,
+  } = usePagination({ itemsPerPage: productsPerPage, items: filteredProducts })
 
   useEffect(() => {
-    if (filterActivated === "All") {
-      return setAllProducts(products)
-    }
-    const filteredProducts = products.filter((product) => {
-      return product.category === filterActivated
-    })
-    setAllProducts(filteredProducts)
-  }, [filterActivated, products])
+    setCurrentPage(1)
+  }, [filterActivated, setCurrentPage])
 
   return (
     <section>
@@ -34,11 +46,18 @@ const ProductsSection = ({ products, categories }: ProductsSectionProps) => {
         setFilterActivated={setFilterActivated}
       />
 
-      <div className='grid grid-cols-4 gap-x-2 gap-y-14'>
-        {allProducts.slice(0, 8).map((product) => (
+      <div className='grid grid-cols-3 gap-x-2 gap-y-14'>
+        {paginatedItems.map((product) => (
           <Card key={product.id} product={product} />
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+        handlePrevPage={handlePrevPage}
+        handleNextPage={handleNextPage}
+      />
     </section>
   )
 }

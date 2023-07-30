@@ -1,6 +1,5 @@
-import { Category } from "@/app/page"
-import React from "react"
 import FilterButton from "./FilterButton"
+import { Category } from "@/lib/types"
 
 type FilterProps = {
   categories: Category[]
