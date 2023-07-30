@@ -17,6 +17,7 @@ const Card = ({ product }: CardProps) => {
 
   const handleClick = () => {
     addToCart(product)
+    console.log(cart)
   }
 
   return (

@@ -6,9 +6,11 @@ type NavLinkProps = {
 }
 const NavLink: React.FC<NavLinkProps> = ({ text, href }) => {
   return (
-    <Link href={href} className='hidden xl:block'>
-      {text}
-    </Link>
+    <li>
+      <Link href={href} className='hidden xl:block'>
+        {text}
+      </Link>
+    </li>
   )
 }
 

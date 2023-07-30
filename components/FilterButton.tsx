@@ -16,7 +16,7 @@ const FilterButton = ({
 
   return (
     <button
-      className={`px-4 py-2 rounded-full font-black text-2xl uppercase ${
+      className={`px-4 py-2 whitespace-nowrap rounded-full font-black text-2xl uppercase ${
         text === filterActivated
           ? "text-white bg-black"
           : "bg-white text-black border-2 border-black"

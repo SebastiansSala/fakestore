@@ -46,7 +46,7 @@ const ProductsSection = ({ products, categories }: ProductsSectionProps) => {
         setFilterActivated={setFilterActivated}
       />
 
-      <div className='grid grid-cols-3 gap-x-2 gap-y-14'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-3 gap-x-2 gap-y-14'>
         {paginatedItems.map((product) => (
           <Card key={product.id} product={product} />
         ))}

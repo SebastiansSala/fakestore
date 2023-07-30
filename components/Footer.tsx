@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { BsSend } from "react-icons/bs"
 
 export default function Footer() {
   const FooterTag = ({ text }: { text: string }) => {
@@ -6,46 +7,65 @@ export default function Footer() {
   }
 
   const FooterTag2 = ({ text }: { text: string }) => {
-    return <h4>{text}</h4>
+    return <h4 className='text-[#909090] text-sm'>{text}</h4>
   }
 
   return (
-    <footer className='bg-[#161616] text-white'>
-      <section className='flex justify-center items-center container mx-auto py-6'>
-        <div className='w-1/3'>
+    <footer className='bg-[#161616] text-white py-16'>
+      <section className='flex justify-center container mx-auto h-auto'>
+        <div className='w-2/5 min-h-full flex flex-col justify-between'>
           <Image src='/../public/logo.jpg' width={50} height={50} alt='logo' />
-          <p>
-            Specializers in providing high-quality, stylish products for your
-            wardrobe
+          <p className='uppercase'>
+            Real designs by real artists for real people
           </p>
         </div>
         <div className='flex flex-1 justify-between'>
-          <div>
+          <div className='space-y-2'>
             <FooterTag text='PRODUCT' />
-            <FooterTag2 text='All Collections' />
-            <FooterTag2 text='Winter Edition' />
-            <FooterTag2 text='Discount' />
+            <div className='space-y-1'>
+              <FooterTag2 text='Jackets' />
+              <FooterTag2 text='Shirts' />
+              <FooterTag2 text='Dresses' />
+              <FooterTag2 text='Outwear' />
+              <FooterTag2 text='Bottoms' />
+            </div>
           </div>
-          <div>
+          <div className='space-y-2'>
             <FooterTag text='BUYING' />
-            <FooterTag2 text='About Us' />
-            <FooterTag2 text='Contact' />
-            <FooterTag2 text='Affilliates' />
+            <div className='space-y-1'>
+              <FooterTag2 text='Shop' />
+              <FooterTag2 text='Terms of Use' />
+              <FooterTag2 text='Privacy' />
+              <FooterTag2 text='How it works' />
+              <FooterTag2 text='Customer Service' />
+            </div>
           </div>
-          <div>
+          <div className='space-y-2'>
             <FooterTag text='SOCIAL' />
-            <FooterTag2 text='FAQs' />
-            <FooterTag2 text='Cookie Policy' />
-            <FooterTag2 text='Terms of Use' />
+            <div className='space-y-1'>
+              <FooterTag2 text='Linkedin' />
+              <FooterTag2 text='Github' />
+            </div>
           </div>
           <div>
             <FooterTag text='JOIN OUR COMMUNITY' />
+            <form className='mt-4'>
+              <div className='relative flex flex-between items-center'>
+                <input
+                  className='rounded-full w-full border border-[#474747] p-3 outline-none bg-black'
+                  type='text'
+                  placeholder='EMAIL ADDRESS'
+                />
+                <button
+                  className='absolute right-0 rounded-full bg-[#de6737] mr-3 p-2 text-lg text-black'
+                  type='button'
+                >
+                  <BsSend />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
-      <div className='h-1 bg-gray-400' />
-      <section className='py-6 text-center'>
-        <p>Copyright &copy;2022Nostra. All right reserved.</p>
       </section>
     </footer>
   )
