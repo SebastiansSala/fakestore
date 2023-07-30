@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className='bg-[#161616] text-white'>
       <section className='flex justify-center items-center container mx-auto py-6'>
         <div className='w-1/3'>
-          <Image src={""} width={100} height={100} alt='logo' />
+          <Image src='/../public/logo.jpg' width={50} height={50} alt='logo' />
           <p>
             Specializers in providing high-quality, stylish products for your
             wardrobe

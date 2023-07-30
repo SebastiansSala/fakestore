@@ -1,3 +1,4 @@
+"use client"
 import { CartProduct } from "@/lib/types"
 import { create } from "zustand"
 
