@@ -1,37 +1,20 @@
-import { useState } from "react"
+import useCart from "@/hooks/useCart"
+import { useEffect } from "react"
 import { createContext } from "react"
 
-type CartContextType = {
-  isOpen: boolean
-  showDrawer: () => void
-  closeDrawer: () => void
-}
+const CartContext = createContext({})
 
-export const CartContext = createContext<CartContextType>({
-  isOpen: false,
-  showDrawer: () => {},
-  closeDrawer: () => {},
-})
+const CartProvider = ({ children }: { children: React.ReactNode }) => {
+  const { setCart } = useCart()
 
-type CartProviderProps = {
-  children: React.ReactNode
-}
-
-const CartProvider = ({ children }: CartProviderProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const showDrawer = () => {
-    setIsOpen(true)
-  }
-
-  const closeDrawer = () => {
-    setIsOpen(false)
-  }
+  useEffect(() => {
+    const cart = localStorage.getItem("cart")
+    const cartParsed = cart ? JSON.parse(cart) : []
+    setCart(cartParsed)
+  }, [setCart])
 
   return (
-    <CartContext.Provider value={{ showDrawer, closeDrawer, isOpen }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={{ setCart }}>{children}</CartContext.Provider>
   )
 }
 

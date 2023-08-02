@@ -10,12 +10,6 @@ const PaginationButton = ({
   onClick,
   disabled = false,
 }: PaginationButtonProps) => {
-  const shouldHide = disabled && (text === "Next" || text === "Previous")
-
-  if (shouldHide) {
-    return null
-  }
-
   return (
     <li>
       <span

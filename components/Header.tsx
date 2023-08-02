@@ -7,12 +7,12 @@ import CartDrawer from "./CartDrawer"
 export default function Header() {
   return (
     <>
-      <section className='bg-black text-white text-center py-4 '>
+      <section className='bg-black text-white text-center py-2'>
         <p className='uppercase text-xs font-bold italic'>
           free shipping on u.s orders over $100{" "}
         </p>
       </section>
-      <header className='flex justify-between items-center sticky px-10 top-0 bg-[#f2f2f3] z-50 py-5'>
+      <header className='flex justify-between items-center sticky px-10 top-0 bg-[#f2f2f3] z-50 py-2'>
         <Image src='/../public/logo.jpg' width={50} height={50} alt='logo' />
         <nav className='h-full'>
           <ul className='flex h-full items-center gap-8'>

@@ -3,11 +3,11 @@ import { BsSend } from "react-icons/bs"
 
 export default function Footer() {
   const FooterTag = ({ text }: { text: string }) => {
-    return <h3>{text}</h3>
+    return <h5>{text}</h5>
   }
 
   const FooterTag2 = ({ text }: { text: string }) => {
-    return <h4 className='text-[#909090] text-sm'>{text}</h4>
+    return <li className='text-[#909090] text-sm'>{text}</li>
   }
 
   return (
@@ -22,30 +22,30 @@ export default function Footer() {
         <div className='flex flex-1 justify-between'>
           <div className='space-y-2'>
             <FooterTag text='PRODUCT' />
-            <div className='space-y-1'>
+            <ul className='space-y-1'>
               <FooterTag2 text='Jackets' />
               <FooterTag2 text='Shirts' />
               <FooterTag2 text='Dresses' />
               <FooterTag2 text='Outwear' />
               <FooterTag2 text='Bottoms' />
-            </div>
+            </ul>
           </div>
           <div className='space-y-2'>
             <FooterTag text='BUYING' />
-            <div className='space-y-1'>
+            <ul className='space-y-1'>
               <FooterTag2 text='Shop' />
               <FooterTag2 text='Terms of Use' />
               <FooterTag2 text='Privacy' />
               <FooterTag2 text='How it works' />
               <FooterTag2 text='Customer Service' />
-            </div>
+            </ul>
           </div>
           <div className='space-y-2'>
             <FooterTag text='SOCIAL' />
-            <div className='space-y-1'>
+            <ul className='space-y-1'>
               <FooterTag2 text='Linkedin' />
               <FooterTag2 text='Github' />
-            </div>
+            </ul>
           </div>
           <div>
             <FooterTag text='JOIN OUR COMMUNITY' />

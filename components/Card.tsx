@@ -1,11 +1,10 @@
 "use client"
 
-import { useContext, useState } from "react"
+import { useState } from "react"
 import AddButton from "./AddButton"
 import { Product } from "@/lib/types"
 import Image from "next/image"
 import useCart from "@/hooks/useCart"
-import { CartContext } from "@/lib/CartProvider"
 
 type CardProps = {
   product: Product
@@ -13,9 +12,8 @@ type CardProps = {
 
 const Card = ({ product }: CardProps) => {
   const [show, setShow] = useState(false)
-  const { addToCart, cart } = useCart()
+  const { addToCart, showDrawer } = useCart()
   const { id, title, price, description, category, image } = product
-  const { showDrawer } = useContext(CartContext)
 
   const handleClick = () => {
     addToCart(product)
@@ -24,7 +22,7 @@ const Card = ({ product }: CardProps) => {
 
   return (
     <div
-      className='w-full rounded-2xl bg-white h-96 relative'
+      className='w-full rounded-2xl bg-white h-96 relative animate-fade-down animate-ease-linear duration-150 animate-duration-100'
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
