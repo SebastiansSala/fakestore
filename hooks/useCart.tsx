@@ -1,5 +1,4 @@
 "use client"
-import { useEffect } from "react"
 import { create } from "zustand"
 import { CartProduct } from "@/lib/types"
 
@@ -14,9 +13,14 @@ type useCartProps = {
   removeFromCart: (product: CartProduct) => void
 }
 
-const useCart = create<useCartProps>((set) => ({
-  cart: [],
+const getInitialState = (): CartProduct[] | [] => {
+  const cart = localStorage.getItem("cart")
+  const cartParsed = cart ? JSON.parse(cart) : []
+  return cartParsed
+}
 
+const useCart = create<useCartProps>((set) => ({
+  cart: getInitialState(),
   setCart: (products) => set({ cart: products }),
   addToCart: (product) => {
     set((state) => {
@@ -31,6 +35,8 @@ const useCart = create<useCartProps>((set) => ({
         : [...state.cart, { ...product, quantity: 1 }]
 
       localStorage.setItem("cart", JSON.stringify(updatedCart))
+      const channel = new BroadcastChannel("cart-channel")
+      channel.postMessage({ type: "cart-update", cart: updatedCart })
 
       return { cart: updatedCart }
     })
@@ -60,7 +66,5 @@ const useCart = create<useCartProps>((set) => ({
   showDrawer: () => set({ isOpen: true }),
   closeDrawer: () => set({ isOpen: false }),
 }))
-
-//get Cart Items from Local Storage and set in useCart
 
 export default useCart

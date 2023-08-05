@@ -16,9 +16,11 @@ export default function Header() {
         <Image src='/../public/logo.jpg' width={50} height={50} alt='logo' />
         <nav className='h-full'>
           <ul className='flex h-full items-center gap-8'>
-            <NavLink href='/shop' text='Shop' />
-            <NavLink href='/shop/arrivals' text='New Arrival' />
-            <NavLink href='/shop/collections' text='Collections' />
+            <NavLink href='/shop' text='COLLECTIONS' />
+            <NavLink href='/shop/arrivals' text='Electronics' />
+            <NavLink href='/shop/collections' text='Jewerly' />
+            <NavLink href='/shop/collections' text="Mens's clothing" />
+            <NavLink href='/shop/collections' text="women's clothing" />
           </ul>
         </nav>
         <div className='flex gap-4 items-center'>

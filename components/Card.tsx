@@ -21,8 +21,8 @@ const Card = ({ product }: CardProps) => {
   }
 
   return (
-    <div
-      className='w-full rounded-2xl bg-white h-96 relative animate-fade-down animate-ease-linear duration-150 animate-duration-100'
+    <li
+      className='w-full rounded-2xl bg-white h-96 relative animate-fade animate-ease-linear'
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
@@ -56,7 +56,7 @@ const Card = ({ product }: CardProps) => {
           </div>
         </div>
       )}
-    </div>
+    </li>
   )
 }
 

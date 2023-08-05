@@ -1,5 +1,3 @@
-import React from "react"
-
 type CartButtonProps = {
   onClick: () => void
   disabled: boolean
@@ -12,7 +10,11 @@ const CartButton: React.FC<CartButtonProps> = ({
   children,
 }) => {
   return (
-    <button onClick={onClick} disabled={disabled} className='p-2'>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className='p-1 bg-slate-300 hover:bg-slate-400 transition'
+    >
       {children}
     </button>
   )

@@ -1,45 +1,54 @@
-import { Products } from "@/app/page"
+import { Category, Product } from "./types"
+import { API_URL } from "@/consts/db"
 
-const URL = "https://fakestoreapi.com/products"
-
-export const getProducts = async () => {
+export const getProducts = async (): Promise<Product[]> => {
   try {
-    const res = await fetch(URL)
+    const res = await fetch(API_URL)
     if (!res.ok) {
       throw new Error("Something went wrong")
     }
     return res.json()
   } catch (e) {
     console.log(e)
+    return []
   }
 }
 
-export const getProductsByCategory = async (category: string) => {
+export const getProductsByCategory = async (
+  category: string
+): Promise<Product[] | undefined> => {
   try {
-    const res = await fetch(URL + `/category/${category}`)
+    const res = await fetch(API_URL + `/category/${category}`)
     if (!res.ok) {
       throw new Error("Something went wrong")
     }
     return res.json()
   } catch (e) {
     console.log(e)
+    return []
   }
 }
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<Category[]> => {
   try {
-    const res = await fetch(URL + "/categories")
+    const res = await fetch(API_URL + "/categories")
     if (!res.ok) {
       throw new Error("Something went wrong")
     }
     return res.json()
   } catch (e) {
     console.log(e)
+    return []
   }
 }
 
-export const getImages = async (take: number) => {
-  const products = (await getProducts()) as Products[]
-  const images = products.slice(0, take).map((product) => product.image)
-  return images
+export const getImages = async (take: number): Promise<string[]> => {
+  try {
+    const products = await getProducts()
+    const images = products.slice(0, take).map((product) => product.image)
+    return images
+  } catch (e) {
+    console.log(e)
+    return []
+  }
 }

@@ -1,12 +1,13 @@
 import { getCategories, getProducts } from "@/lib/services"
 import Hero from "@/components/Hero"
 import ProductsSection from "@/components/ProductsSections"
-import { Category, Product } from "@/lib/types"
 import Video from "@/components/Video"
+import sortProducts from "@/utils/sortProducts"
 
 export default async function Home() {
-  const categories = (await getCategories()) as Category[]
-  const products = (await getProducts()) as Product[]
+  const categories = await getCategories()
+  const products = await getProducts()
+  const sortedProducts = sortProducts(products)
 
   return (
     <main className='container mx-auto min-h-screen items-center justify-center flex-wrap gap-8 px-4'>
@@ -18,7 +19,7 @@ export default async function Home() {
           the inefflable sense of freedom that comes with travel.
         </h2>
       </section>
-      <ProductsSection categories={categories} products={products} />
+      <ProductsSection categories={categories} products={sortedProducts} />
       <section className='flex flex-col md:flex-row h-[500px] gap-2 my-28'>
         <div className='md:w-7/12 h-3/5 md:h-full bg-[#de6737] rounded-3xl flex flex-col'>
           <div className='h-4/6'>

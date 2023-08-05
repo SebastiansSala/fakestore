@@ -2,14 +2,14 @@ import { CartProduct } from "@/lib/types"
 import Image from "next/image"
 import CartButton from "./CartButton"
 import useCart from "@/hooks/useCart"
+import { IoRemove, IoAdd, IoTrashOutline } from "react-icons/io5"
 
 type CartProductProps = {
   product: CartProduct
 }
 const CartProduct = ({ product }: CartProductProps) => {
   const { title, price, description, image, quantity } = product
-
-  const { addToCart, decreaseProductQuantity } = useCart()
+  const { addToCart, decreaseProductQuantity, removeFromCart } = useCart()
 
   return (
     <li className='flex gap-8'>
@@ -28,19 +28,25 @@ const CartProduct = ({ product }: CartProductProps) => {
             <p className='line-clamp-1'>{title}</p>
             <p className='line-clamp-3'>{description}</p>
           </div>
+          <span className='flex-1 text-xl '>
+            <IoTrashOutline
+              className='cursor-pointer hover:text-slate-500 text-slate-400'
+              onClick={() => removeFromCart(product)}
+            />
+          </span>
         </div>
         <div className='flex flex-1 justify-between items-center'>
           <p className='text-xl font-bold'>{price}</p>
-          <div className='flex gap-4 items-center'>
+          <div className='flex gap-x-2 items-center'>
             <CartButton
               onClick={() => decreaseProductQuantity(product)}
               disabled={false}
             >
-              Remove
+              <IoRemove />
             </CartButton>
-            <span>{quantity}</span>
+            <span className='text-xl min-w-[30px] text-center'>{quantity}</span>
             <CartButton onClick={() => addToCart(product)} disabled={false}>
-              Add
+              <IoAdd />
             </CartButton>
           </div>
         </div>

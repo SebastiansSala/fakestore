@@ -1,14 +1,15 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { Product } from "@/lib/types"
+import { useState, useMemo } from "react"
 
 type UsePaginationProps = {
   itemsPerPage: number
-  items: any[]
+  items: Product[] | undefined
 }
 
 type PaginationResult = {
-  paginatedItems: any[]
+  paginatedItems: Product[]
   currentPage: number
   totalPages: number
   setCurrentPage: (page: number) => void
@@ -22,9 +23,6 @@ const usePagination = ({
 }: UsePaginationProps): PaginationResult => {
   const [currentPage, setCurrentPage] = useState(1)
 
-  const totalItems = items.length
-  const totalPages = Math.ceil(totalItems / itemsPerPage)
-
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
   }
@@ -34,10 +32,27 @@ const usePagination = ({
   }
 
   const paginatedItems = useMemo(() => {
+    if (!items) {
+      return []
+    }
     const startIndex = (currentPage - 1) * itemsPerPage
     const endIndex = startIndex + itemsPerPage
     return items.slice(startIndex, endIndex)
   }, [currentPage, items, itemsPerPage])
+
+  if (!items) {
+    return {
+      paginatedItems: [],
+      currentPage,
+      totalPages: 0,
+      setCurrentPage,
+      handlePrevPage,
+      handleNextPage,
+    }
+  }
+
+  const totalItems = items.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   return {
     paginatedItems,

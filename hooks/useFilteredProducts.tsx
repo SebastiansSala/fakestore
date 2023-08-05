@@ -1,3 +1,5 @@
+"use client"
+
 import { useMemo } from "react"
 import { Product } from "@/lib/types"
 

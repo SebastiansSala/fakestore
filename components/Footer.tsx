@@ -14,7 +14,13 @@ export default function Footer() {
     <footer className='bg-[#161616] text-white py-16'>
       <section className='flex justify-center container mx-auto h-auto'>
         <div className='w-2/5 min-h-full flex flex-col justify-between'>
-          <Image src='/../public/logo.jpg' width={50} height={50} alt='logo' />
+          <Image
+            src='/../public/logo.jpg'
+            width={50}
+            height={50}
+            alt='logo'
+            className='bg-transparent'
+          />
           <p className='uppercase'>
             Real designs by real artists for real people
           </p>

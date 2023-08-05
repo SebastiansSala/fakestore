@@ -12,7 +12,7 @@ const Filter = ({
   setFilterActivated,
 }: FilterProps) => {
   return (
-    <div className='flex items-center gap-4 pb-16 overflow-x-scroll '>
+    <div className='flex items-center gap-4 pb-16 overflow-x-auto '>
       <FilterButton
         text='All'
         filterActivated={filterActivated}
