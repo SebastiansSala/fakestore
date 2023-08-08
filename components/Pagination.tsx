@@ -1,5 +1,3 @@
-"use client"
-
 import PaginationButton from "./PaginationButton"
 
 type PaginationProps = {
@@ -18,13 +16,16 @@ export default function Pagination({
 }: PaginationProps) {
   const pagesMapped = Array.from({ length: totalPages }, (_, i) => i + 1)
 
+  const isPrevButtonDisabled = currentPage === 1
+  const isNextButtonDisabled = currentPage === totalPages
+
   return (
     <nav aria-label='Page navigation example' className='p-10 w-full'>
       <ul className='inline-flex -space-x-px text-base h-10 justify-center w-full'>
         <PaginationButton
           text='Previous'
           onClick={handlePrevPage}
-          disabled={currentPage === 1}
+          disabled={isPrevButtonDisabled}
         />
         {pagesMapped.map((page) => (
           <PaginationButton
@@ -38,7 +39,7 @@ export default function Pagination({
         <PaginationButton
           text='Next'
           onClick={handleNextPage}
-          disabled={currentPage === totalPages}
+          disabled={isNextButtonDisabled}
         />
       </ul>
     </nav>

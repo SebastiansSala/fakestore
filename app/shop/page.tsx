@@ -1,10 +1,15 @@
 import ProductsSection from "@/components/ProductsSection"
-import sortProducts from "@/utils/sortProducts"
+import sortBy from "@/utils/sortBy"
 import { getProducts } from "@/lib/services"
 
-const ShopPage = async () => {
+type Props = {
+  searchParams: Record<string, string[]>
+}
+
+const ShopPage = async ({ searchParams }: Props) => {
   const products = await getProducts()
-  const sortedProducts = sortProducts(products)
+
+  const sortedProducts = sortBy(products, searchParams)
 
   return (
     <main className='container mx-auto min-h-screen'>
