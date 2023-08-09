@@ -1,5 +1,4 @@
 import { getCategories, getProducts } from "@/lib/services"
-import Hero from "@/components/Hero"
 import ProductsSection from "@/components/ProductsSections"
 import Video from "@/components/Video"
 import sortProducts from "@/utils/sortProducts"
@@ -11,7 +10,6 @@ export default async function Home() {
 
   return (
     <main className='container mx-auto min-h-screen items-center justify-center flex-wrap gap-8 px-4'>
-      <Hero />
       <section className='py-28'>
         <h2 className='text-5xl font-extrabold'>
           SOPA makes clothest to elevate everyday life through lighthreated

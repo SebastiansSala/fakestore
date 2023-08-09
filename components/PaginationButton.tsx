@@ -14,7 +14,7 @@ const PaginationButton = ({
         onClick={onClick}
         className={`flex items-center justify-center px-4 h-10 leading-tight text-white bg-[#de6737] border ${
           disabled
-            ? "border-gray-300"
+            ? "border-orange-500"
             : "border-[#de6737] dark:border-orange-500 hover:bg-gray-100 hover:text-orange-500 dark:bg-orange-500 dark:text-white dark:hover:bg-orange-500 dark:hover:text-white"
         }`}
       >
