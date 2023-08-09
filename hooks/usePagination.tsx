@@ -42,9 +42,10 @@ const usePagination = ({
   const [currentPage, setCurrentPage] = useState(1)
   // Calculate the total number of items
   const totalItems = items?.length
+
   // Calculate the total number of pages
   const totalPages = useMemo(
-    () => Math.ceil(totalItems || 0 / itemsPerPage),
+    () => Math.ceil(totalItems! / itemsPerPage),
     [totalItems, itemsPerPage]
   )
   /**

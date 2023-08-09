@@ -1,7 +1,7 @@
 import { Category, Product } from "./types"
 import { API_URL } from "@/consts/db"
 
-export const getProducts = async (): Promise<Product[]> => {
+export const getProducts = async (): Promise<Product[] | []> => {
   try {
     const res = await fetch(API_URL)
     if (!res.ok) {
@@ -16,9 +16,11 @@ export const getProducts = async (): Promise<Product[]> => {
 
 export const getProductsByCategory = async (
   category: string
-): Promise<Product[] | undefined> => {
+): Promise<Product[] | []> => {
   try {
-    const res = await fetch(API_URL + `/category/${category}`)
+    const res = await fetch(
+      API_URL + `/category/${category.toLocaleLowerCase()}`
+    )
     if (!res.ok) {
       throw new Error("Something went wrong")
     }

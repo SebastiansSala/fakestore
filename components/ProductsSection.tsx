@@ -27,6 +27,8 @@ const ProductsSection = ({ products }: ProductsSectionProps) => {
     setCurrentPage(1)
   }, [setCurrentPage])
 
+  if (totalPages === 0) return null
+
   return (
     <section>
       <SortBy />
@@ -35,6 +37,7 @@ const ProductsSection = ({ products }: ProductsSectionProps) => {
           <Card key={product.id} product={product} />
         ))}
       </ul>
+
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

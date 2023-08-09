@@ -10,6 +10,7 @@ const FilterButton = ({
 }: FilterButtonProps) => {
   const handleClick = () => {
     setFilterActivated(text)
+    console.log(text)
   }
 
   return (

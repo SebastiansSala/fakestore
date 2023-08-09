@@ -4,7 +4,7 @@ import { heroImages } from "@/data"
 export default function Hero() {
   const images = heroImages
   return (
-    <section className='grid md:grid-cols-2 gap-2 h-[600px] container mx-auto'>
+    <section className='grid md:grid-cols-2 gap-2 h-[600px] container mx-auto my-10'>
       <div className='h-full relative'>
         <Image
           src={images[0]}
@@ -28,6 +28,7 @@ export default function Hero() {
             width={800}
             height={800}
             className='h-full object-cover'
+            priority
           />
           <Image
             src={images[0]}
@@ -35,6 +36,7 @@ export default function Hero() {
             width={800}
             height={800}
             className='h-full object-cover'
+            priority
           />
         </div>
       </div>
