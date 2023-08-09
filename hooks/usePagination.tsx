@@ -1,7 +1,8 @@
 "use client"
 
+import { useState, useMemo, useEffect } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Product } from "@/lib/types"
-import { useState, useMemo } from "react"
 
 type UsePaginationProps = {
   itemsPerPage: number
@@ -21,6 +22,8 @@ const usePagination = ({
   itemsPerPage,
   items,
 }: UsePaginationProps): PaginationResult => {
+  const pathname = usePathname()
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
 
   const handlePrevPage = () => {
@@ -39,6 +42,10 @@ const usePagination = ({
     const endIndex = startIndex + itemsPerPage
     return items.slice(startIndex, endIndex)
   }, [currentPage, items, itemsPerPage])
+
+  useEffect(() => {
+    router.push(`${pathname}?page=${currentPage}`)
+  }, [currentPage, pathname, router])
 
   if (!items) {
     return {
