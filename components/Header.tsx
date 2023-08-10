@@ -1,9 +1,9 @@
 import Image from "next/image"
-import { AiOutlineSearch } from "react-icons/ai"
 import { CgProfile } from "react-icons/cg"
 import NavLink from "./NavLInk"
 import CartDrawer from "./CartDrawer"
 import Link from "next/link"
+import Search from "./Search"
 
 export default function Header() {
   return (
@@ -32,7 +32,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className='flex gap-4 items-center'>
-          <AiOutlineSearch className='text-2xl' />
+          <Search />
           <CartDrawer />
           <CgProfile className='text-2xl' />
         </div>

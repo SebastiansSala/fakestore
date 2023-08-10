@@ -1,42 +1,42 @@
 import Image from "next/image"
-import { heroImages } from "@/data"
 
 export default function Hero() {
-  const images = heroImages
   return (
-    <section className='grid md:grid-cols-2 gap-2 h-[600px] container mx-auto my-10'>
+    <section className='grid md:grid-cols-2 gap-2 max-h-[600px] container mx-auto my-10'>
       <div className='h-full relative'>
         <Image
-          src={images[0]}
-          alt=''
+          src='/../public/model4_1.avif'
+          alt='model4_1'
           width={800}
           height={800}
-          className='h-full object-cover'
+          className='h-full object-contain'
           priority
         />
       </div>
       <div className='flex flex-col relative gap-2'>
         <div className='h-4/6 relative bg-[#d4d3cf]'>
-          <h1 className='font-bold uppercase'>
-            REAL DESIGNS BY REAL ARTISTS FOR REAL PEOPLE
-          </h1>
+          <Image
+            src='/../public/model2.avif'
+            alt='model2'
+            width={800}
+            height={800}
+            className='h-full object-contain'
+          />
         </div>
         <div className='grid grid-cols-2 gap-2 flex-1'>
           <Image
-            src={images[0]}
-            alt=''
+            src='/../public/model3.avif'
+            alt='model3'
             width={800}
             height={800}
-            className='h-full object-cover'
-            priority
+            className='h-full object-contain'
           />
           <Image
-            src={images[0]}
-            alt=''
+            src='/../public/model1.avif'
+            alt='model1'
             width={800}
             height={800}
-            className='h-full object-cover'
-            priority
+            className='h-full object-contain'
           />
         </div>
       </div>
